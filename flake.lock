@@ -151,23 +151,27 @@
         "nixos-grub-themes": "nixos-grub-themes",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
-        "sddm-eucalyptus-drop": "sddm-eucalyptus-drop"
+        "silentSDDM": "silentSDDM"
       }
     },
-    "sddm-eucalyptus-drop": {
-      "flake": false,
+    "silentSDDM": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1727933297,
-        "narHash": "sha256-SUOqcK7fGb5OnWmB4Wenqr9PPiagYUoEHjLd5CM6fyk=",
-        "owner": "Matt.Jolly",
-        "repo": "sddm-eucalyptus-drop",
-        "rev": "0b82ca465b7dac6d7ff15ebaf1b2f26daba5d126",
-        "type": "gitlab"
+        "lastModified": 1780180566,
+        "narHash": "sha256-tfXlfIFWY+E/izmRb9Qd3to3guxhyIh9HyZAoTKqa9k=",
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
+        "rev": "0828621769acaa26ef131ed96255c7bd06038111",
+        "type": "github"
       },
       "original": {
-        "owner": "Matt.Jolly",
-        "repo": "sddm-eucalyptus-drop",
-        "type": "gitlab"
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
+        "type": "github"
       }
     },
     "systems": {

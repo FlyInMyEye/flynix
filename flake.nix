@@ -17,9 +17,9 @@
 
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 
-    sddm-eucalyptus-drop = {
-      url = "gitlab:Matt.Jolly/sddm-eucalyptus-drop";
-      flake = false;
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };

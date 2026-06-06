@@ -1,20 +1,32 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
-{
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    package = pkgs.kdePackages.sddm;
-    theme = "eucalyptus-drop";
-    extraPackages = with pkgs.kdePackages; [
-      qt6ct
-      qtsvg
-      qtdeclarative
-      qt5compat
-    ];
+let
+  wallpaper = ../../../wallpapers/this-wallpaper-is-not-available.png;
+  wallpaperName = builtins.baseNameOf (toString wallpaper);
+
+  themes = {
+    silent = {
+      programs.silentSDDM = {
+        enable = true;
+        theme = "rei";
+        backgrounds.default = wallpaper;
+        settings = {
+          LoginScreen.background = wallpaperName;
+          LockScreen.background = wallpaperName;
+        };
+      };
+    };
   };
 
-  environment.systemPackages = [
-    pkgs.customPkgs.sddm-eucalyptus-drop
+  selectedTheme = "silent";
+  selectedThemeConfig = themes.${selectedTheme}
+    or (throw "Unknown SDDM theme: ${selectedTheme}");
+in
+{
+  imports = [
+    inputs.silentSDDM.nixosModules.default
   ];
+
+  services.displayManager.sddm.package = pkgs.kdePackages.sddm;
 }
+// selectedThemeConfig
