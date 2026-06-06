@@ -32,7 +32,7 @@
         inherit system;
         overlays = [
           (final: prev: {
-            customPkgs = import ./pkgs { pkgs = final; inherit inputs; };
+            customPkgs = import ./pkgs/_default.nix { pkgs = final; inherit inputs; };
           })
         ];
         config = {
