@@ -13,6 +13,7 @@
     ./sound.nix
     ./timezone.nix
     ./users.nix
+    ./mimeapps.nix
     ./zapret.nix
   ];
 }
