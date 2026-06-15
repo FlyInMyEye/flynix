@@ -14,6 +14,12 @@ in {
           isDefault = true;
           path = "Original profile";
           extensions.force = true;
+          extensions.packages = with firefox-addons; [
+            clearurls
+            firefox-color
+            privacy-badger
+            ublock-origin
+          ];
         };
       };
     })
