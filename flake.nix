@@ -6,12 +6,22 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
  
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,7 +34,7 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-stable, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
@@ -45,12 +55,13 @@
           ];
         };
       };
+      themeConfig = import ./hosts/hp-laptop/theme.nix { inherit pkgs; };
     in {
       nixosConfigurations = {
         hp-laptop = nixpkgs.lib.nixosSystem {
           inherit pkgs system;
           specialArgs = {
-            inherit inputs pkgs-stable;
+            inherit inputs pkgs-stable themeConfig;
             pkgs-unstable = pkgs;
           };
           modules = [

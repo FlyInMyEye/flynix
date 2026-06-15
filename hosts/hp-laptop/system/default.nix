@@ -11,6 +11,7 @@
     ./privacy.nix
     ./sddm.nix
     ./sound.nix
+    ./stylix.nix
     ./timezone.nix
     ./users.nix
     ./mimeapps.nix

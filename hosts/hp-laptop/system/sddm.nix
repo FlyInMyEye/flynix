@@ -1,14 +1,14 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, themeConfig, ... }:
 
 let
-  wallpaper = ../../../wallpapers/this-wallpaper-is-not-available.png;
+  wallpaper = themeConfig.wallpaper;
   wallpaperName = builtins.baseNameOf (toString wallpaper);
 
   themes = {
     silent = {
       programs.silentSDDM = {
         enable = true;
-        theme = "rei";
+        theme = themeConfig.sddm.silentPreset;
         backgrounds.default = wallpaper;
         settings = {
           LoginScreen.background = wallpaperName;
@@ -18,7 +18,7 @@ let
     };
   };
 
-  selectedTheme = "silent";
+  selectedTheme = themeConfig.sddm.theme;
   selectedThemeConfig = themes.${selectedTheme}
     or (throw "Unknown SDDM theme: ${selectedTheme}");
 in

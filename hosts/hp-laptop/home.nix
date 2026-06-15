@@ -2,6 +2,7 @@
 
 {
   imports = [
+    inputs.stylix.homeModules.stylix
     inputs.nix4nvchad.homeManagerModule
   ];
 

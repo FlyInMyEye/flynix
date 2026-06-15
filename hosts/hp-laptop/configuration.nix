@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, pkgs-stable, pkgs-unstable, ... }:
+{ config, pkgs, inputs, pkgs-stable, pkgs-unstable, themeConfig, ... }:
 
 {
   imports = [ 
@@ -13,7 +13,7 @@
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs pkgs-stable pkgs-unstable;
+      inherit inputs pkgs-stable pkgs-unstable themeConfig;
     };
     useUserPackages = true;
     backupFileExtension = "hm-backup";
