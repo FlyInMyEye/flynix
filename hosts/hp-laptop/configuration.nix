@@ -15,11 +15,19 @@
     extraSpecialArgs = {
       inherit inputs pkgs-stable pkgs-unstable;
     };
-    useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "hm-backup";
     users = {
-      "archbtw" = { 
+      "archbtw" = {
+        nixpkgs.config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [
+            "ciscoPacketTracer9-9.0.0"
+            "dotnet-sdk-6.0.428"
+            "dotnet-runtime-6.0.36"
+            "electron-36.9.5"
+          ];
+        };
         imports = [
           ../../hosts/hp-laptop/home.nix
         ];
