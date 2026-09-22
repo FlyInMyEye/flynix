@@ -1,14 +1,22 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, lib, pkgs, bootConfig, ... }:
+
+let
+  resumeParams = lib.optionals (bootConfig.resumeDevice != null) (
+    lib.optionals (bootConfig.resumeOffset != null) [
+      "resume_offset=${toString bootConfig.resumeOffset}"
+    ]
+  );
+in
 
 {
   boot.loader = {
     systemd-boot.enable = false;
-    timeout = 0;
+    timeout = bootConfig.grubTimeout;
     grub.useOSProber = true;
 
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
+      efiSysMountPoint = bootConfig.efiMountPoint;
     };
 
     grub = {
@@ -23,10 +31,8 @@
     };
   };
 
-  boot.resumeDevice = "/dev/disk/by-label/NIXROOT";
-  boot.kernelParams = [
-    "resume=/dev/disk/by-label/NIXROOT"
-    "resume_offset=39788544"
+  boot.resumeDevice = lib.mkIf (bootConfig.resumeDevice != null) bootConfig.resumeDevice;
+  boot.kernelParams = resumeParams ++ [
     "quiet"
     "splash"
     "loglevel=3"

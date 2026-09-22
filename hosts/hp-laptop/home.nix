@@ -1,14 +1,14 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, userConfig, ... }:
 
 {
   imports = [
     inputs.stylix.homeModules.stylix
-    inputs.nix4nvchad.homeManagerModule
+    inputs.nix4nvchad.homeManagerModules.default
   ];
 
   home = { 
-    username = "archbtw";
-    homeDirectory = "/home/archbtw";
+    username = userConfig.username;
+    homeDirectory = userConfig.homeDirectory;
     stateVersion = "24.05";
   };
 
@@ -20,7 +20,7 @@
     TERMINAL = "kitty";
     EDITOR = "nvim";
     VISUAL = "nvim";
-    HYPRSHOT_DIR = /home/archbtw/Screenshots;
+    HYPRSHOT_DIR = "${userConfig.homeDirectory}/Screenshots";
 
   };
 

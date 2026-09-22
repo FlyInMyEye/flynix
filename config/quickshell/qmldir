@@ -1,0 +1,27 @@
+singleton Motion 1.0 Motion.qml
+CapsuleContent 1.0 CapsuleContent.qml
+ClipboardCard 1.0 ClipboardCard.qml
+Colors 1.0 Colors.qml
+Island 1.0 Island.qml
+IslandMotion 1.0 IslandMotion.qml
+IslandSurface 1.0 IslandSurface.qml
+Launcher 1.0 Launcher.qml
+LockProcess 1.0 LockProcess.qml
+MediaProgress 1.0 MediaProgress.qml
+MotionSlot 1.0 MotionSlot.qml
+ProgressBorder 1.0 ProgressBorder.qml
+ReservedSpace 1.0 ReservedSpace.qml
+RadioService 1.0 RadioService.qml
+RadioBubble 1.0 RadioBubble.qml
+LiquidBridge 1.0 LiquidBridge.qml
+RadioPanel 1.0 RadioPanel.qml
+Services 1.0 Services.qml
+Settings 1.0 Settings.qml
+Shortcuts 1.0 Shortcuts.qml
+StateMachine 1.0 StateMachine.qml
+StatsCard 1.0 StatsCard.qml
+Theme 1.0 Theme.qml
+TrayDrawer 1.0 TrayDrawer.qml
+TrayMenu 1.0 TrayMenu.qml
+WorkspaceModel 1.0 WorkspaceModel.qml
+WorkspaceStrip 1.0 WorkspaceStrip.qml

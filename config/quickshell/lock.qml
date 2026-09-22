@@ -1,0 +1,3 @@
+import "lock"
+
+LockScreen {}

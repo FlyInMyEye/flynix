@@ -1,14 +1,14 @@
 { pkgs }:
 
-let
-  wallpaper = ../../wallpapers/this-wallpaper-is-not-available.png;
-in
-{
-  wallpaper = wallpaper;
+rec {
+  # Desktop background and the image used for Stylix's automatic palette.
+  desktopWallpaper = ../../wallpapers/ign_chainsaw-man.png;
+  # Set another image here to give the lock screen its own background.
+  lockWallpaper = desktopWallpaper;
 
   stylix = {
     mode = "preset";
-    preset = "dracula";
+    preset = "nord";
     polarity = "dark";
     presets = {
       nord = "${pkgs.base16-schemes}/share/themes/nord.yaml";

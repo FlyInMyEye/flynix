@@ -3,18 +3,40 @@
     ./automount.nix
     ./bluetooth.nix
     ./bootloader.nix
+    ./compat.nix
+    ./desktop.nix
+    ./flatpak.nix
     ./fonts.nix
+    ./hardware.nix
+    ./home-manager.nix
+    ./hypridle.nix
+    ./hyprpaper.nix
     ./identity.nix
+    ./installed-json.nix
+    ./java.nix
     ./keyboard.nix
     ./networking.nix
+    ./nh.nix
+    ./nix.nix
+    ./nixui.nix
+    ./performance.nix
     ./polkit.nix
     ./privacy.nix
+    ./quickshell.nix
+    ./resume-offset.nix
     ./sddm.nix
+    ./services.nix
     ./sound.nix
     ./stylix.nix
+    ./sudo.nix
     ./timezone.nix
     ./users.nix
     ./mimeapps.nix
+    ./upower.nix
+    ./brightnessctl.nix
+    ./clipboard.nix
+    ./window-manager.nix
+    ./winapps.nix
     ./zapret.nix
   ];
 }

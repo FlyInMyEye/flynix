@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-freecad.url = "github:nixos/nixpkgs/0e251e24a4f24e036a084b6b4b2d2491af4167f4";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
  
     home-manager = {
@@ -27,8 +28,18 @@
 
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 
+    nixui-src = {
+      url = "github:FlyInMyEye/nixui";
+      flake = false;
+    };
+
     silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    winapps = {
+      url = "path:/home/archbtw/FreshASF/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -43,6 +54,7 @@
         overlays = [
           (final: prev: {
             customPkgs = import ./pkgs/_default.nix { pkgs = final; inherit inputs; };
+            freecad = inputs.nixpkgs-freecad.legacyPackages.${system}.freecad;
           })
         ];
         config = {
@@ -56,12 +68,14 @@
         };
       };
       themeConfig = import ./hosts/hp-laptop/theme.nix { inherit pkgs; };
+      hostSettings = import ./hosts/hp-laptop/settings.nix { };
+      inherit (hostSettings) userConfig bootConfig hardwareConfig uxConfig;
     in {
       nixosConfigurations = {
         hp-laptop = nixpkgs.lib.nixosSystem {
           inherit pkgs system;
           specialArgs = {
-            inherit inputs pkgs-stable themeConfig;
+            inherit inputs pkgs-stable themeConfig userConfig bootConfig hardwareConfig uxConfig;
             pkgs-unstable = pkgs;
           };
           modules = [

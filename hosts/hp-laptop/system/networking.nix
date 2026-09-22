@@ -2,15 +2,15 @@
 
 {
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "1.1.1.1" ];
+  networking.networkmanager.dns = "systemd-resolved";
 
   services.resolved = {
     enable = true;
     settings.Resolve = {
-      FallbackDNS = [ "1.1.1.1" "8.8.8.8" "1.0.0.1" "8.8.4.4" ];
       DNSStubListener = true;
       Cache = true;
       CacheFromLocalhost = true;
-      DNSOverTLS = "opportunistic";
     };
   };
 

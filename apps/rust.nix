@@ -1,4 +1,4 @@
-{ ... }:
+{ userConfig, ... }:
 
 {
   home-manager.sharedModules = [
@@ -38,8 +38,8 @@
 
     [cargo-new]
     # Default author information
-    name = "archbtw"
-    email = "user@example.com"
+    name = "${userConfig.username}"
+    email = "${userConfig.email}"
 
     [registries.crates-io]
     protocol = "sparse"

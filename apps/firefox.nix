@@ -9,10 +9,10 @@ in {
       programs.firefox = {
         enable = true;
         configPath = ".mozilla/firefox";
-        profiles."Original profile" = {
+        profiles."Main profile" = {
           id = 0;
           isDefault = true;
-          path = "Original profile";
+          path = "ix82vo45.default";
           extensions.force = true;
           extensions.packages = with firefox-addons; [
             clearurls

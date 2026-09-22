@@ -1,7 +1,7 @@
 { inputs, pkgs, themeConfig, ... }:
 
 let
-  wallpaper = themeConfig.wallpaper;
+  wallpaper = themeConfig.desktopWallpaper;
   wallpaperName = builtins.baseNameOf (toString wallpaper);
 
   themes = {
@@ -28,5 +28,7 @@ in
   ];
 
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
+
+  services.displayManager.defaultSession = "hyprland";
 }
 // selectedThemeConfig

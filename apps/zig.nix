@@ -1,0 +1,11 @@
+{ lib, pkgs, ... }:
+
+{
+  home-manager.sharedModules = [
+    ({ lib, pkgs, ... }: {
+      home.packages = [
+        (lib.attrByPath (lib.splitString "." "zig") null pkgs)
+      ];
+    })
+  ];
+}
